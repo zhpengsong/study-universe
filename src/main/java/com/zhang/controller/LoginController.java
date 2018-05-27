@@ -1,16 +1,14 @@
 package com.zhang.controller;
 
-import com.zhang.domain.entity.User;
-import com.zhang.service.LoginService;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by Administrator on 2018/5/26 0026.
  */
-@RestController
+/*@RestController
 @RequestMapping("/user")
 public class LoginController {
     @Resource
@@ -20,5 +18,24 @@ public class LoginController {
     public User login(){
         User user = loginService.getById();
         return user;
+    }
+}*/
+
+@Controller
+public class LoginController {
+
+    @RequestMapping("/login")
+    public String login(HttpSession session){
+        session.setAttribute("userName","zhangsan");
+        return "loginSuccess";
+    }
+    @RequestMapping("/buy")
+    public String buy(HttpSession session){
+        return "buy";
+    }
+    @RequestMapping("/plogin")
+    public String plogin(HttpSession session){
+
+        return "login";
     }
 }
